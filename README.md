@@ -1,5 +1,7 @@
 # Efood API
 
+[![Efood API CI](https://github.com/herick-gomes/efood-api/actions/workflows/ci.yml/badge.svg)](https://github.com/herick-gomes/efood-api/actions/workflows/ci.yml)
+
 A food-delivery backend built with **Django REST Framework and PostgreSQL**, designed to connect to my [Efood React project](https://github.com/herick-gomes/Efood).
 
 The interesting part of a checkout is what happens when things change: a price is edited, the last item sells out, or a customer taps the order button twice. This project handles those cases explicitly, with database transactions and tests.
@@ -112,7 +114,7 @@ Customers can cancel only a placed order. Merchants can cancel placed or accepte
 
 **Small scope, explicit rules.** One restaurant per order. All money is BRL and represented as decimal strings in the native API. There are no delivery fees, discounts or payment-provider integrations in this version. The legacy adapter alone exposes numeric prices to match the current React types.
 
-**Frontend integration without a surprise deployment.** The companion frontend changes are prepared on `feat/own-api-integration` in Efood. They replace card collection with sign-in and a simulated checkout, preserve retry keys, and show the total confirmed by the server. See [integration notes](docs/FRONTEND.md). The currently published site is not switched automatically.
+**Frontend integration without a surprise deployment.** The companion frontend changes are prepared in [draft PR #1](https://github.com/herick-gomes/Efood/pull/1), on `feat/own-api-integration` in Efood. They replace card collection with sign-in and a simulated checkout, preserve retry keys, and show the total confirmed by the server. See [integration notes](docs/FRONTEND.md). The currently published site is not switched automatically.
 
 ## Verification
 

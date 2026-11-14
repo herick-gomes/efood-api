@@ -2,20 +2,20 @@
 
 ## Backend
 
-- 51 tests passed locally against PostgreSQL 17.11.
+- 51 tests passed against PostgreSQL locally and in [GitHub Actions](https://github.com/herick-gomes/efood-api/actions/runs/43602211390).
 - 97% line coverage in `shop`, excluding migrations, admin and demo commands.
 - Concurrency verified with separate connections: two attempts using one customer/key produce one order; two customers competing for the last unit produce one success and one stock conflict.
-- Ruff lint and format checks passed.
-- Django system checks passed; no missing migrations.
-- OpenAPI schema validated with `--fail-on-warn`.
-- Static-file collection completed.
+- Ruff lint/format, Django checks, migration checks and OpenAPI validation passed.
+- Migration execution and static-file collection completed in CI.
 
 ## Frontend integration
 
-The companion branch in Efood adds tests for JWT handling, refresh failure, absence of card fields, authentication errors and preserving a checkout key after a failed request. Its production bundle is built separately. GitHub verification results and the pull request link will be recorded after publication.
+[Draft integration PR #1](https://github.com/herick-gomes/Efood/pull/1) is ready for review. Its [GitHub Actions run](https://github.com/herick-gomes/Efood/actions/runs/43602214058) passed all 7 new tests across 3 suites, and the production build compiled successfully.
+
+Tests cover JWT handling, refresh failure, absence of card fields, authentication errors and preservation of a checkout key after a failed request. The published frontend's main branch was not changed.
 
 ## Limits
 
-A full real-browser walkthrough and mobile visual review have not been completed. Docker Compose and the Windows PowerShell script were prepared but not executed in this Linux workspace. PostgreSQL itself was run directly for backend tests. No production hosting, real payments, real delivery or load testing was performed.
+A full real-browser walkthrough and mobile visual review have not been completed. Docker Compose and the Windows PowerShell script were prepared but not executed in this workspace. PostgreSQL itself was run directly locally and as a service container in GitHub Actions. No production API hosting, real payments, real delivery or load testing was performed.
 
-This record distinguishes implemented functionality and automated verification from deployment readiness.
+Before merging the frontend PR: deploy the API, configure the HTTPS API URL and exact CORS origin, then validate the complete browser flow.
