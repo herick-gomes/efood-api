@@ -28,6 +28,13 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+      - name: Verify deployment dependencies in a clean environment
+        run: |
+          pip install uv==0.13.5
+          uv venv /tmp/efood-deploy-check --python 3.12
+          uv pip install --python /tmp/efood-deploy-check/bin/python -r pyproject.toml
+          /tmp/efood-deploy-check/bin/python manage.py check
+          python scripts/check_dependencies.py
       - run: pip install -r requirements-dev.txt
       - run: ruff check . && ruff format --check .
       - run: python manage.py check && python manage.py makemigrations --check --dry-run
