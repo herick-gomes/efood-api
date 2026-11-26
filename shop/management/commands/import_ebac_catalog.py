@@ -9,7 +9,6 @@ from django.db import transaction
 
 from shop.models import Product, Restaurant, User
 
-
 FIXTURE = Path(settings.BASE_DIR) / "shop" / "fixtures" / "ebac_restaurantes.json"
 IMPORT_USERNAME = "efood_legacy_import"
 
