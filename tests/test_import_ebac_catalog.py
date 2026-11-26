@@ -28,12 +28,8 @@ def test_original_catalog_is_idempotent_and_preserves_existing_records(client):
         password="Test-Password-2026",
         role=User.Role.MERCHANT,
     )
-    original = Restaurant.objects.create(
-        owner=owner, name="Bella Tavola Italiana", category="Already here"
-    )
-    existing_dish = Product.objects.create(
-        restaurant=original, name="Do not edit", price="23.50", stock=7
-    )
+    original = Restaurant.objects.create(owner=owner, name="Bella Tavola Italiana", category="Already here")
+    existing_dish = Product.objects.create(restaurant=original, name="Do not edit", price="23.50", stock=7)
 
     call_command("import_ebac_catalog", apply=True)
     assert Restaurant.objects.count() == 7
