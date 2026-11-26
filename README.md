@@ -20,6 +20,10 @@ The interesting part of a checkout is what happens when things change: a price i
 - Customer cancellation before acceptance; merchant cancellation before preparation; stock restored once.
 - OpenAPI/Swagger documentation, Docker Compose, PostgreSQL CI and automated tests.
 
+## Original Efood catalog
+
+The original six EBAC restaurants and their 22 menu items can be restored to our own PostgreSQL database without removing the two newer demo restaurants or changing existing orders. See the [non-destructive legacy catalog import guide](docs/IMPORT_EBAC.md). Photos and text originate from the original course API and are used for educational demonstration.
+
 ## Quick start: Docker
 
 ```bash
